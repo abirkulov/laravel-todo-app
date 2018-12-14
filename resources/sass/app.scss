@@ -1,0 +1,28 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// The Chosen Plugin
+@import 'chosen/build.scss';
+
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.invalid-file {
+    padding: 5px;
+    border: 1px solid #e3342f;
+}
+
+.invalid-file ~ .invalid-feedback {
+    display: block;
+}
+
+.image { width: 200px }
+.image > img { width: 100% }
