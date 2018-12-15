@@ -10,6 +10,6 @@ In this project SQLite is being used. So there's no need to install a database s
 ### Install
 ```bash
 cd laravel-todo-app
-compose install
+composer install
 npm install
 ```
