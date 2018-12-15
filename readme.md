@@ -6,3 +6,10 @@ In this project SQLite is being used. So there's no need to install a database s
 3. CRUD (Categories, Posts, Rules)
 4. Sending email
 5. Ability for admin to change user roles and delete users
+
+### Install
+```bash
+cd laravel-todo-app
+compose install
+npm install
+```
