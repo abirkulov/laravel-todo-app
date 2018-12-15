@@ -12,4 +12,5 @@ In this project SQLite is being used. So there's no need to install a database s
 cd laravel-todo-app
 composer install
 npm install
+php artisan serve
 ```
