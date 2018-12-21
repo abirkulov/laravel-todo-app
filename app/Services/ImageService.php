@@ -41,7 +41,7 @@ class ImageService {
         $this->fileName = 'img_' . time() . '.' . $extension;
 
         if($this->fileInfoIsSaveable()) {
-            $this->saveInfo($params['modelId'], $params['modelType']);
+            $this->saveFileInfo($params['modelId'], $params['modelType']);
         }
 
         $fileInput->storeAs('public/images', $this->fileName);
@@ -77,7 +77,7 @@ class ImageService {
      * @param string $modelType
      * @return void
      */
-    public function saveInfo($modelId, $modelType)
+    public function saveFileInfo($modelId, $modelType)
     {
         Images::create([
             'name' => $this->fileName,
@@ -93,7 +93,7 @@ class ImageService {
      * @param Image $imgModel
      * @return void
      */
-    public function updateInfo($imgModel)
+    public function updateFileInfo($imgModel)
     {
         $imgModel->update([
             'name' => $this->fileName,

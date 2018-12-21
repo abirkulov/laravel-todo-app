@@ -81,7 +81,7 @@ class PostsController extends Controller
 
             $oldImage = $post->image;
             $this->image->delete($oldImage->name);
-            $this->image->updateInfo($oldImage);
+            $this->image->updateFileInfo($oldImage);
             
             $post->update($updatedPost);
         } else {
