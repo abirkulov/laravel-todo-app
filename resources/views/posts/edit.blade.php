@@ -19,18 +19,12 @@
             <form method="post" action="{{ route('posts.update', ['id' => $post->id]) }}" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control {{ 
-                        Session::has('title') || $errors->has('title') ? 'is-invalid' : '' }}" 
+                    <input type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" 
                         id="title" name="title" aria-describedby="titleHelp" placeholder="Enter a title"
                         value="{{ old('title') ? old('title') : $post->title }}">
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
-                        </div>
-                    @endif
-                    @if(Session::has('title'))
-                        <div class="invalid-feedback">
-                            {{ Session::get('title') }}
                         </div>
                     @endif
                 </div>

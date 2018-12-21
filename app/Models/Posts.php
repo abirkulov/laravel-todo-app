@@ -14,6 +14,11 @@ class Posts extends Model
         'category_id'
     ];
 
+    public function isNotSelf($id)
+    {
+        return $this->id != $id;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
