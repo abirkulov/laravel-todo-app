@@ -40,7 +40,7 @@ class ImageService {
         $extension = $fileInput->getClientOriginalExtension();
         $this->fileName = 'img_' . time() . '.' . $extension;
 
-        if($this->isSaveableFileInfo()) {
+        if($this->fileInfoIsSaveable()) {
             $this->saveInfo($params['modelId'], $params['modelType']);
         }
 
@@ -65,7 +65,7 @@ class ImageService {
      * 
      * @return bool
      */
-    public function isSaveableFileInfo()
+    public function fileInfoIsSaveable()
     {
         return array_has($this->params, 'modelId') && array_has($this->params, 'modelType');
     }
@@ -104,13 +104,15 @@ class ImageService {
     /**
      * Deleting a file
      * 
-     * @param string $filePath
+     * @param Image $image
      * @return void
      */
-    public function delete($fileName)
+    public function delete($image)
     {
-        if(Storage::exists('public/images/' . $fileName)) {
-            Storage::delete('public/images/' . $fileName);
+        if(Storage::exists('public/images/' . $image->name)) {
+            Storage::delete('public/images/' . $image->name);
         }
+
+        $image->delete();
     }
 }

@@ -38,7 +38,7 @@ class PostsController extends Controller
         return view('posts.create', compact('categories'));
     }
 
-    public function save(Request $request)
+    public function save(CreateRequest $request)
     {
         $file = $request->img;
         $post = $request->except(['_token', 'img']);
@@ -97,7 +97,7 @@ class PostsController extends Controller
         $post = Posts::find($id);
         $image = $post->image;
     
-        $this->image->delete($image->name);
+        $this->image->delete($image);
         $post->delete();
 
         setActionResponse('success', __('messages.post.deleted'));
