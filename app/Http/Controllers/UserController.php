@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function updateUserRole(UpdateRequest $request, $id)
     {
-        $user = User::with('roles')->find($id);
+        $user = User::with('roles')->findOrFail($id);
         $newRoles = Role::find($request->roles);
         $oldRoles = $user->roles;
 
@@ -51,7 +51,7 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        User::find($id)->delete();
+        User::findOrFail($id)->delete();
         setActionResponse('success', __('messages.user.deleted'));
         return redirect()->route('user.store');
     }

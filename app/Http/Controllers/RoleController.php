@@ -42,7 +42,7 @@ class RoleController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $role = Role::with('permissions')->find($id);
+        $role = Role::with('permissions')->findOrFail($id);
         $permissions = Permission::all();
 
         return view('role.edit', compact(['role', 'permissions']));
@@ -51,9 +51,9 @@ class RoleController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $roleData = $request->except(['_token', 'permissions']);
-        $role = Role::where('name', $request->name)->first();
+        $role = Role::where('name', $request->name)->firstOrFail();
 
-        if($role && $role->isNotSelf($id)) {
+        if($role->isNotSelf($id)) {
             return redirect()->back()->withInput()
                 ->withErrors(['name' => __('messages.role.exists')]);
         }

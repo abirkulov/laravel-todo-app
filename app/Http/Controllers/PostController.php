@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function view($id)
     {
-        $post = Post::with(['user', 'category', 'image'])->find($id);
+        $post = Post::with(['user', 'category', 'image'])->findOrFail($id);
         return view('post.view', compact('post'));
     }
 
@@ -55,18 +55,17 @@ class PostController extends Controller
 
     public function edit(EditRequest $request, $id)
     {
-        $post = Post::with(['user', 'category', 'image'])->find($id);
+        $post = Post::with(['user', 'category', 'image'])->findOrFail($id);
         $categories = Category::all();
-
         return view('post.edit', compact(['post', 'categories']));
     }
 
     public function update(UpdateRequest $request, $id)
     {
         $updatedPost = $request->except(['_token', 'img']); 
-        $post = Post::where('title', $request->title)->first();
+        $post = Post::where('title', $request->title)->firstOrFail();
         
-        if($post && $post->isNotSelf($id)) {
+        if($post->isNotSelf($id)) {
             return redirect()->back()->withInput()
                 ->withErrors(['title' => __('messages.post.exists')]);
         }
@@ -95,7 +94,7 @@ class PostController extends Controller
 
     public function delete(DeleteRequest $request, $id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $image = $post->image;
     
         $this->image->delete($image);

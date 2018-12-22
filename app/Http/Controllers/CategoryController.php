@@ -26,14 +26,14 @@ class CategoryController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $name = $request->input('name_'.$id);
-        $category = Category::where('name', $name)->first();
+        $category = Category::where('name', $name)->firstOrFail();
 
-        if($category && $category->isNotSelf($id)) {
+        if($category->isNotSelf($id)) {
             return redirect()->back()->withInput()
                 ->withErrors(['name_'.$id => __('messages.category.exists')]);
         }
 
-        Category::find($id)->update([
+        Category::findOrFial($id)->update([
             'name' => $request->input('name_'.$id)
         ]);
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        Category::find($id)->delete();
+        Category::findOrFail($id)->delete();
         setActionResponse('success', __('message.category.deleted'));
         return redirect()->route('category.store');
     }
