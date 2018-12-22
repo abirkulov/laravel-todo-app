@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \Spatie\Permission\Models\Role;
-use \Spatie\Permission\Models\Permission;
+use App\Models\Role;
+use App\Models\Permission;
 use App\Http\Requests\Role\UpdateRequest;
 use App\Http\Requests\Role\CreateRequest;
 use App\Models\User;
@@ -52,7 +52,7 @@ class RoleController extends Controller
         $roleData = $request->except(['_token', 'permissions']);
         $role = Role::where('name', $request->name)->first();
 
-        if($role && $role->id != $id) {
+        if($role && $role->isNotSelf($id)) {
             return redirect()->back()->withInput()
                 ->withErrors(['name' => __('messages.role.exists')]);
         }

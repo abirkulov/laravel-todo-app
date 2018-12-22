@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UpdateRequest;
-use \Spatie\Permission\Models\Role;
-use \Spatie\Permission\Models\Permission;
+use App\Models\Role;
+use App\Models\Permission;
 use App\Models\User;
 
 class UserController extends Controller
