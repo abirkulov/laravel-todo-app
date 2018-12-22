@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\Images;
+use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
 class ImageService {
-    private $fileInput;
-    private $fileName;
     private $params;
-
+    private $fileName;
+    private $fileInput;
+    
     /**
      * Checking whether file is multiple
      * 
@@ -79,7 +79,7 @@ class ImageService {
      */
     public function saveFileInfo($modelId, $modelType)
     {
-        Images::create([
+        Image::create([
             'name' => $this->fileName,
             'mime' => $this->fileInput->getClientMimeType(),
             'imageable_id' => $modelId,

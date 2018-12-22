@@ -35,18 +35,18 @@
                     @if(Auth::check())
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a href="{{ route('posts.store') }}" class="nav-link">Posts</a>
+                                <a href="{{ route('post.store') }}" class="nav-link">Posts</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('categories.store') }}" class="nav-link">Categories</a>
+                                <a href="{{ route('category.store') }}" class="nav-link">Categories</a>
                             </li>
 
                             @role('Admin')
                                 <li class="nav-item">
-                                    <a href="{{ route('roles.store') }}" class="nav-link">Roles</a>
+                                    <a href="{{ route('role.store') }}" class="nav-link">Roles</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('users.store') }}" class="nav-link">Users</a>
+                                    <a href="{{ route('user.store') }}" class="nav-link">Users</a>
                                 </li>
                             @endrole
 

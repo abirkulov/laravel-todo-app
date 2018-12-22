@@ -33,12 +33,12 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Gates for Posts
          */
-        Gate::define('edit-post', 'App\Policies\PostsPolicy@edit');
-        Gate::define('delete-post', 'App\Policies\PostsPolicy@delete');
+        Gate::define('edit-post', 'App\Policies\PostPolicy@edit');
+        Gate::define('delete-post', 'App\Policies\PostPolicy@delete');
 
         /**
          * Gates for Roles
          */
-        Gate::define('manage-roles', 'App\Policies\RolesPolicy@manageRoles');
+        Gate::define('manage-roles', 'App\Policies\RolePolicy@manageRoles');
     }
 }

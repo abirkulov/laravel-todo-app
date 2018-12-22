@@ -22,7 +22,8 @@ class EmailController extends Controller
 
         Mail::to($request->email)->send(
             new SendEmail(
-                'testapp@berkut.dev', 'Upload File', $message, $file
+                'testapp@berkut.dev', 'Upload File', 
+                $message, $file
             )
         );
 

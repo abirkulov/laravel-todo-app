@@ -30,8 +30,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function removeRoles($roles)
+    {
+        foreach($roles as $role) {
+            $this->removeRole($role->name);
+        }
+    }
+
     public function posts()
     {
-        return $this->hasMany(Posts::class);
+        return $this->hasMany(Post::class);
     }
 }

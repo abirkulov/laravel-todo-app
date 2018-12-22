@@ -17,23 +17,23 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::middleware(['auth', 'verified', 'web'])->group(function(){
 
     /**
-     * Routes for Posts
+     * Routes for Post
      */
-    Route::get('/posts', 'PostsController@store')->name('posts.store');
-    Route::get('/posts/view/{id}', 'PostsController@view')->name('posts.view');
-    Route::get('/posts/create', 'PostsController@create')->name('posts.create');
-    Route::post('/posts/save', 'PostsController@save')->name('posts.save');
-    Route::get('/posts/edit/{id}', 'PostsController@edit')->name('posts.edit');
-    Route::post('/posts/update/{id}', 'PostsController@update')->name('posts.update');
-    Route::get('/posts/delete/{id}', 'PostsController@delete')->name('posts.delete');
+    Route::get('/posts', 'PostController@store')->name('post.store');
+    Route::get('/posts/view/{id}', 'PostController@view')->name('post.view');
+    Route::get('/posts/create', 'PostController@create')->name('post.create');
+    Route::post('/posts/save', 'PostController@save')->name('post.save');
+    Route::get('/posts/edit/{id}', 'PostController@edit')->name('post.edit');
+    Route::post('/posts/update/{id}', 'PostController@update')->name('post.update');
+    Route::get('/posts/delete/{id}', 'PostController@delete')->name('post.delete');
 
     /**
-     * Routes for Categories
+     * Routes for Category
      */
-    Route::get('/categories', 'CategoriesController@store')->name('categories.store');
-    Route::post('/categories/save', 'CategoriesController@save')->name('categories.save');
-    Route::post('/categories/update/{id}', 'CategoriesController@update')->name('categories.update');
-    Route::get('/categories/delete/{id}', 'CategoriesController@delete')->name('categories.delete');
+    Route::get('/categories', 'CategoryController@store')->name('category.store');
+    Route::post('/categories/save', 'CategoryController@save')->name('category.save');
+    Route::post('/categories/update/{id}', 'CategoryController@update')->name('category.update');
+    Route::get('/categories/delete/{id}', 'CategoryController@delete')->name('category.delete');
 
     /**
      * Routes for Email
@@ -42,22 +42,22 @@ Route::middleware(['auth', 'verified', 'web'])->group(function(){
     Route::post('/email/send', 'EmailController@send')->name('email.send');
 
     /**
-     * Routes for Roles
+     * Routes for Role
      */
-    Route::get('/roles', 'RolesController@store')->name('roles.store');
-    Route::get('/roles/create', 'RolesController@create')->name('roles.create');
-    Route::post('/roles/save', 'RolesController@save')->name('roles.save');
-    Route::get('/roles/view/{id}', 'RolesController@view')->name('roles.view');
-    Route::get('/roles/edit/{id}', 'RolesController@edit')->name('roles.edit');
-    Route::post('/roles/update/{id}', 'RolesController@update')->name('roles.update');
-    Route::get('/roles/delete/{id}', 'RolesController@delete')->name('roles.delete');
+    Route::get('/roles', 'RoleController@store')->name('role.store');
+    Route::get('/roles/create', 'RoleController@create')->name('role.create');
+    Route::post('/roles/save', 'RoleController@save')->name('role.save');
+    Route::get('/roles/view/{id}', 'RoleController@view')->name('role.view');
+    Route::get('/roles/edit/{id}', 'RoleController@edit')->name('role.edit');
+    Route::post('/roles/update/{id}', 'RoleController@update')->name('role.update');
+    Route::get('/roles/delete/{id}', 'RoleController@delete')->name('role.delete');
 
     /**
-     * Routes for Users
+     * Routes for User
      */
-    Route::get('/users', 'UsersController@store')->name('users.store');
-    Route::get('/users/view/{id}', 'UsersController@view')->name('users.view');
-    Route::get('/users/edit/user-role/{id}', 'UsersController@editUserRole')->name('users.edit.role');
-    Route::post('/users/update/user-role/{id}', 'UsersController@updateUserRole')->name('users.update.role');
-    Route::get('/users/delete/{id}', 'UsersController@delete')->name('users.delete');
+    Route::get('/users', 'UserController@store')->name('user.store');
+    Route::get('/users/view/{id}', 'UserController@view')->name('user.view');
+    Route::get('/users/edit/user-role/{id}', 'UserController@editUserRole')->name('user.edit.role');
+    Route::post('/users/update/user-role/{id}', 'UserController@updateUserRole')->name('user.update.role');
+    Route::get('/users/delete/{id}', 'UserController@delete')->name('user.delete');
 });
