@@ -15,6 +15,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('can:manage-roles');
+        view()->share('page', 'role');
     }
 
     public function store()

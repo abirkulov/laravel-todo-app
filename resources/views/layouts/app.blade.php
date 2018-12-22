@@ -34,23 +34,23 @@
                     <!-- Left Side Of Navbar -->
                     @if(Auth::check())
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
+                            <li class="nav-item {{ $page == 'post' ? 'active' : '' }}">
                                 <a href="{{ route('post.store') }}" class="nav-link">Posts</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {{ $page == 'category' ? 'active' : '' }}">
                                 <a href="{{ route('category.store') }}" class="nav-link">Categories</a>
                             </li>
 
                             @role('Admin')
-                                <li class="nav-item">
+                                <li class="nav-item {{ $page == 'role' ? 'active' : '' }}">
                                     <a href="{{ route('role.store') }}" class="nav-link">Roles</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item {{ $page == 'user' ? 'active' : '' }}">
                                     <a href="{{ route('user.store') }}" class="nav-link">Users</a>
                                 </li>
                             @endrole
 
-                            <li class="nav-item">
+                            <li class="nav-item {{ $page == 'email' ? 'active' : '' }}">
                                 <a href="{{ route('email.form') }}" class="nav-link">Email</a>
                             </li>
                         </ul>

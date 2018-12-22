@@ -18,6 +18,7 @@ class PostController extends Controller
     public function __construct(ImageService $image)
     {
         $this->image = $image;
+        view()->share('page', 'post');
     }
     
     public function store()

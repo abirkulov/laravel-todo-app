@@ -10,6 +10,11 @@ use App\Models\User;
 
 class EmailController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('page', 'email');    
+    }
+    
     public function form()
     {
         return view('email-form');

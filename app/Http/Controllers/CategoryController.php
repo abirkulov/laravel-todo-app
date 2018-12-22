@@ -11,6 +11,7 @@ class CategoryController extends Controller
 {
     public function store()
     {
+        view()->share('page', 'category');
         $categories = Category::orderBy('id', 'desc')->get();
         return view('category.store', compact('categories'));
     }

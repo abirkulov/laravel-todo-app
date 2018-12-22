@@ -11,6 +11,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        view()->share('page', 'user');    
+    }
+
     public function store()
     {
         $users = User::all();
