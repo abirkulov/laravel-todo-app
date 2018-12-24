@@ -30,7 +30,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function removeRoles($roles)
+    public function revokeRoles($roles)
     {
         foreach($roles as $role) {
             $this->removeRole($role->name);

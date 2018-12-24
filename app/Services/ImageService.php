@@ -6,9 +6,26 @@ use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
 class ImageService {
-    private $params;
     private $fileName;
     private $fileInput;
+
+    /**
+     * This properties for setting an Imageable model.
+     * The image will be saved for a specified model class and 
+     * a specified model id.
+     */
+    private $modelId = null;
+    private $modelType = null;
+
+    public function setModelId(int $modelId)
+    {
+        $this->modelId = $modelId;
+    }
+
+    public function setModelType(string $modelType)
+    {
+        $this->modelType = $modelType;
+    }
     
     /**
      * Checking whether file is multiple
@@ -28,9 +45,8 @@ class ImageService {
      * @param array|null $params
      * @return void
      */
-    public function upload($fileInput, $params = null)
+    public function upload($fileInput)
     {
-        $this->params = $params;
         $this->fileInput = $fileInput;
 
         if($this->isMultiple($fileInput)) {
@@ -40,11 +56,16 @@ class ImageService {
         $extension = $fileInput->getClientOriginalExtension();
         $this->fileName = 'img_' . time() . '.' . $extension;
 
-        if($this->fileInfoIsSaveable()) {
-            $this->saveFileInfo($params['modelId'], $params['modelType']);
+        if($this->fileInfoIsNotSaveable()) {
+            throw new \InvalidArgumentException('
+                Check setting model type and model id.
+                You must call setModelId(int $id) and setModelType(string $modelType)
+                before uploading a file.
+            ');
         }
 
         $fileInput->storeAs('public/images', $this->fileName);
+        $this->saveFileInfo();
     }
 
     /**
@@ -65,9 +86,9 @@ class ImageService {
      * 
      * @return bool
      */
-    public function fileInfoIsSaveable()
+    public function fileInfoIsNotSaveable()
     {
-        return array_has($this->params, 'modelId') && array_has($this->params, 'modelType');
+        return is_null($this->modelId) || is_null($this->modelType);
     }
 
     /**
@@ -77,13 +98,13 @@ class ImageService {
      * @param string $modelType
      * @return void
      */
-    public function saveFileInfo($modelId, $modelType)
+    public function saveFileInfo()
     {
         Image::create([
             'name' => $this->fileName,
             'mime' => $this->fileInput->getClientMimeType(),
-            'imageable_id' => $modelId,
-            'imageable_type' => $modelType
+            'imageable_id' => $this->modelId,
+            'imageable_type' => $this->modelType
         ]);
     }
 

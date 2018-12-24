@@ -45,9 +45,9 @@ class PostController extends Controller
         $post = $request->except(['_token', 'img']);
         $postId = Post::insertGetId($post);
 
-        $this->image->upload($file, [
-            'modelId' => $postId, 'modelType' => Post::class
-        ]);
+        $this->image->setModelId($postId);
+        $this->image->setModelType(Post::class);
+        $this->image->upload($file);
 
         setActionResponse('success', __('messages.post.added'));
         return redirect()->route('post.store');
@@ -75,13 +75,12 @@ class PostController extends Controller
         if($request->file('img')) {
             $file = $request->file('img');
 
-            $this->image->upload($file, [
-                'modelId' => $id, 'modelType' => Post::class
-            ]);
+            $this->image->setModelId($postId);
+            $this->image->setModelType(Post::class);
+            $this->image->upload($file);
 
-            $oldImage = $post->image;
-            $this->image->delete($oldImage->name);
-            $this->image->updateFileInfo($oldImage);
+            $this->image->delete($post->image->name);
+            $this->image->updateFileInfo($post->image);
             
             $post->update($updatedPost);
         } else {

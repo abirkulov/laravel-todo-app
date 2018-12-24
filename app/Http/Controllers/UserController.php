@@ -36,7 +36,7 @@ class UserController extends Controller
         $newRoles = Role::find($request->roles);
         $oldRoles = $user->roles;
 
-        $user->removeRoles($oldRoles);
+        $user->revokeRoles($oldRoles);
 
         if($newRoles->isEmpty()) {
             setActionResponse('success', __('messages.role.revoked'));
