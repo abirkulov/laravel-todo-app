@@ -79,8 +79,9 @@ class PostController extends Controller
             $this->image->setModelType(Post::class);
             $this->image->upload($file);
 
-            $this->image->delete($post->image->name);
-            $this->image->updateFileInfo($post->image);
+            $oldImage = $post->image;
+            $this->image->delete($oldImage->name);
+            $this->image->updateFileInfo($oldImage);
             
             $post->update($updatedPost);
         } else {
