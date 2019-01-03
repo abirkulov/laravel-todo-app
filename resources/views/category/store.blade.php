@@ -32,8 +32,7 @@
             <ul class="list-group">
                 @foreach ($categories as $category)
                     <li class="list-group-item">
-                        <div class="category-display {{
-                            $errors->has('name_'.$category->id) ? 'd-none' : 'd-block' }}">
+                        <div class="category-display {{ $errors->has('name_'.$category->id) ? 'd-none' : 'd-block' }}">
                             <div class="flex-container d-flex justify-content-between align-items-center">
                                 <p class="category-name h5 mb-0">{{ $category->name }}</p>
                                 <div class="actions">

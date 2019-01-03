@@ -42,7 +42,6 @@ class ImageService {
      * Uploading a file
      * 
      * @param UploadFile $fileInput
-     * @param array|null $params
      * @return void
      */
     public function upload($fileInput)
@@ -57,11 +56,9 @@ class ImageService {
         $this->fileName = 'img_' . time() . '.' . $extension;
 
         if($this->fileInfoIsNotSaveable()) {
-            throw new \InvalidArgumentException('
-                Check setting model type and model id.
-                You must call setModelId(int $id) and setModelType(string $modelType)
-                before uploading a file.
-            ');
+            throw new \InvalidArgumentException(
+                __('messages.exception.upload_image')
+            );
         }
 
         $fileInput->storeAs('public/images', $this->fileName);
@@ -94,8 +91,6 @@ class ImageService {
     /**
      * Saving file info in a database
      * 
-     * @param integer $modelId
-     * @param string $modelType
      * @return void
      */
     public function saveFileInfo()

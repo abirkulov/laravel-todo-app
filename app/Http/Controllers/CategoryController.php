@@ -9,9 +9,13 @@ use App\Http\Requests\Category\CreateRequest;
 
 class CategoryController extends Controller
 {
-    public function store()
+    public function __construct()
     {
         view()->share('page', 'category');
+    }
+
+    public function store()
+    {
         $categories = Category::orderBy('id', 'desc')->get();
         return view('category.store', compact('categories'));
     }

@@ -26,5 +26,12 @@ return [
         'exists' => 'The role with this name already exists. Choose another one.',
         'updated' => 'The category has been successfully updated!',
         'deleted' => 'The role has been successfully deleted!'
+    ],
+    'exception' => [
+        'upload_image' => trim('
+            Check setting model type and model id. You must call 
+            setModelId(int $id) and setModelType(string $modelType)
+            before uploading a file.
+        ')
     ]
 ];
