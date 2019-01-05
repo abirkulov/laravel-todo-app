@@ -12,7 +12,7 @@
         <div class="text-message">
             <p>From: {{ $emailFrom }}</p>
             <p>{{ $text }}</p>
-            <img src="{{ $message->embed($file->getRealPath()) }}">
+            <img src="{{ $message->embedData($rawData, $fileName) }}">
         </div>
     </div>
 </body>

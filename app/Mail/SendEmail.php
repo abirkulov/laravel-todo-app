@@ -14,18 +14,20 @@ class SendEmail extends Mailable
     public $emailFrom;
     public $subject;
     public $text;
-    public $file;
+    public $rawData;
+    public $fileName;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($emailFrom, $subject, $text, $file)
+    public function __construct($emailFrom, $subject, $text, $rawData, $fileName)
     {
         $this->subject = $subject;
         $this->text = $text;
-        $this->file = $file;
+        $this->rawData = base64_decode($rawData);
+        $this->fileName = $fileName;
         $this->emailFrom = $emailFrom;
     }
 
@@ -36,11 +38,17 @@ class SendEmail extends Mailable
      */
     public function build()
     {
+        // return $this->from($this->emailFrom)
+        //             ->view('emails.mail-content')
+        //             ->attach($this->file->getRealPath(), [
+        //                 'as' => $this->file->getClientOriginalName(),
+        //                 'mime' => $this->file->getClientMimeType()
+        //             ]);
+        
+        /**
+         * Sending an email with "raw data" attachment
+         */
         return $this->from($this->emailFrom)
-                    ->view('emails.mail-content')
-                    ->attach($this->file->getRealPath(), [
-                        'as' => $this->file->getClientOriginalName(),
-                        'mime' => $this->file->getClientMimeType()
-                    ]);
+            ->view('emails.mail-content');
     }
 }
