@@ -75,12 +75,12 @@ class PostController extends Controller
         if($request->file('img')) {
             $file = $request->file('img');
 
-            $this->image->setModelId($postId);
+            $this->image->setModelId($post->id);
             $this->image->setModelType(Post::class);
             $this->image->upload($file);
 
             $oldImage = $post->image;
-            $this->image->delete($oldImage->name);
+            $this->image->delete($oldImage);
             $this->image->updateFileInfo($oldImage);
             
             $post->update($updatedPost);

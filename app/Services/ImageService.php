@@ -125,7 +125,7 @@ class ImageService {
      */
     public function delete($image)
     {
-        if(Storage::exists('public/images/' . $image->name)) {
+        if($image && Storage::exists('public/images/' . $image->name)) {
             Storage::delete('public/images/' . $image->name);
         }
 
