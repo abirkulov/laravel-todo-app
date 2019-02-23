@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Renders alert-panel with a messages
+ * 
+ * @param string $type
+ * @param string $message
+ * @return void
+ */
 function setActionResponse($type, $message = null)
 {
     $message = $message ?? 'You are not allowed to perform this action!';

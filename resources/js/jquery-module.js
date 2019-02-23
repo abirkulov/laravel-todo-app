@@ -1,7 +1,4 @@
-import {
-    getDeleteModal, inputErrorsListener,
-    deleteFlashMessage, clearErrorsOnInput
-} from './functions';
+import * as helpers from './functions';
 
 $(document).ready(() => {
 
@@ -9,15 +6,15 @@ $(document).ready(() => {
      * Common events for deleting Flash Messages
      * and errors on form input
      */
-    deleteFlashMessage();
-    inputErrorsListener();
+    helpers.deleteFlashMessage();
+    helpers.inputErrorsListener();
 
     /**
      * Events for Posts
      */
     $('.delete-post-btn').on('click', function(){
         let deleteRoute = '/posts/delete/' + $(this).data('id');
-        getDeleteModal(deleteRoute);
+        helpers.getDeleteModal(deleteRoute);
     });
 
     /**
@@ -68,7 +65,7 @@ $(document).ready(() => {
 
     $('.delete-category-btn').on('click', function () {
         let deleteRoute = '/categories/delete/' + $(this).data('id');
-        getDeleteModal(deleteRoute);
+        helpers.getDeleteModal(deleteRoute);
     });
 
     /**
@@ -76,7 +73,7 @@ $(document).ready(() => {
      */
     $('.delete-role-btn').on('click', function () {
         let deleteRoute = '/roles/delete/' + $(this).data('id');
-        getDeleteModal(deleteRoute);
+        helpers.getDeleteModal(deleteRoute);
     });
 
     $("#permissions").chosen();
@@ -88,7 +85,7 @@ $(document).ready(() => {
 
     $('.delete-user-btn').on('click', function () {
         let deleteRoute = '/users/delete/' + $(this).data('id');
-        getDeleteModal(deleteRoute);
+        helpers.getDeleteModal(deleteRoute);
     });
 
 });

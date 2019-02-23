@@ -37,9 +37,7 @@ class CategoryController extends Controller
                 ->withErrors(['name_'.$id => __('messages.category.exists')]);
         }
 
-        Category::findOrFial($id)->update([
-            'name' => $request->input('name_'.$id)
-        ]);
+        Category::findOrFail($id)->update(['name' => $name]);
 
         setActionResponse('success', __('messages.category.updated'));
         return redirect()->route('category.store');

@@ -15,7 +15,7 @@ class EditRequest extends FormRequest
     public function authorize()
     {
         $post = Post::find($this->route('id'));
-        return $post && $this->user()->can('delete-post', $post);
+        return $post && $this->user()->can('edit-post', $post);
     }
 
     /**
