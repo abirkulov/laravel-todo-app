@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\Role;
-use App\Models\Permission;
 use App\Models\User;
 
 class UserController extends Controller
@@ -38,7 +35,7 @@ class UserController extends Controller
 
         $user->revokeRoles($oldRoles);
 
-        if($newRoles->isEmpty()) {
+        if(!$newRoles || $newRoles->isEmpty()) {
             setActionResponse('success', __('messages.role.revoked'));
             return redirect()->route('user.store');
         }
