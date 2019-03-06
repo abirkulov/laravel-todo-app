@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Requests\Category\CreateRequest;

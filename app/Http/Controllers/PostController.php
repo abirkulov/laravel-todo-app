@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\Post\CreateRequest;
 use App\Http\Requests\Post\EditRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Http\Requests\Post\DeleteRequest;
 use App\Models\Post;
-use App\Models\Images;
-use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
 
 class PostController extends Controller
