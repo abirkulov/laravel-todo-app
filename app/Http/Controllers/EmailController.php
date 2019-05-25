@@ -39,7 +39,8 @@ class EmailController extends Controller
             'attachment' => $rawData
         ];
 
-        ProcessMailSending::dispatch($mailData);
+        ProcessMailSending::dispatch($mailData)
+            ->delay(now()->addSeconds(5));
 
         setActionResponse('success', 'The Email has been successfully sent!');
         return redirect()->route('email.form');
