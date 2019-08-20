@@ -48,4 +48,14 @@ class CategoryController extends Controller
         setActionResponse('success', __('message.category.deleted'));
         return redirect()->route('category.store');
     }
+
+    public function getAll()
+    {
+        return Category::all();
+    }
+
+    public function draggable()
+    {
+        return view('draggable/store');
+    }
 }

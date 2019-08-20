@@ -60,4 +60,10 @@ Route::middleware(['auth', 'verified', 'web'])->group(function(){
     Route::get('/users/edit/user-role/{id}', 'UserController@editUserRole')->name('user.edit.role');
     Route::post('/users/update/user-role/{id}', 'UserController@updateUserRole')->name('user.update.role');
     Route::get('/users/delete/{id}', 'UserController@delete')->name('user.delete');
+
+    /**
+     * Routes for draggable elements
+     */
+    Route::get('/api/categories', 'CategoryController@getAll')->name('category.json');
+    Route::get('/categories/draggable', 'CategoryController@draggable')->name('category.draggable');
 });

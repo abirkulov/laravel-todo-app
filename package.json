@@ -22,6 +22,7 @@
     "popper": "^1.0.1",
     "popper.js": "^1.14.6",
     "sass-svg-uri": "^1.0.0",
-    "vue": "^2.5.17"
+    "vue": "^2.6.10",
+    "vuedraggable": "^2.23.0"
   }
 }
