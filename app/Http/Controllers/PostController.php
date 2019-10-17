@@ -9,6 +9,7 @@ use App\Http\Requests\Post\UpdateRequest;
 use App\Http\Requests\Post\DeleteRequest;
 use App\Models\Post;
 use App\Services\ImageService;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {

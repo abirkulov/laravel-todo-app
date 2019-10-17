@@ -20,7 +20,7 @@
             <div class="text mb-4">
                 {{ $post->text }}
             </div>
-            <div class="image mb-4">
+            <div class="mb-4">
                 <img src="{{ asset('storage/images/'.$post->image->name) }}" alt="">
             </div>
             <div class="post-info">
