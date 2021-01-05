@@ -14,7 +14,7 @@
     "laravel-mix": "^2.0"
   },
   "dependencies": {
-    "axios": "^0.18",
+    "axios": "^0.21",
     "bootstrap": "^4.2.1",
     "chosen-js": "^1.8.7",
     "jquery": "^3.3.1",
